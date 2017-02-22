@@ -1,0 +1,28 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <h1> Liste des restaurants </h1>
+  </div>
+
+  <% @restaurants.each do |restaurant| %>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class ="col-lg-4 text-center">
+          <h2><%= restaurant.name %></h2>
+          <p><%= restaurant.address %></p>
+        <%= link_to "Delete", restaurant_path(restaurant),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %> |
+        <%= link_to "Update", edit_admin_restaurant_path(restaurant) %> |
+        <%= link_to "Show", admin_restaurant_path(restaurant) %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+</br>
+</br>
+</br>
+<div class="container-fluid">
+  <div class="text-center">
+    <%= link_to "Create", new_admin_restaurant_path, class: "btn btn-primary" %>
+</div>

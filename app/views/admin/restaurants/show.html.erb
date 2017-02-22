@@ -1,0 +1,30 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <h2><%= @restaurant.name %></h2>
+    <p><%= @restaurant.address %></p>
+  </div>
+  <div class="raw-fluid">
+  <h3> Votre opinion nous intéresse ! </h3>
+    <div class="span12">
+      <ul>
+        <div class="col-lg-4">
+          <p><% @restaurant.reviews.each do |review| %></p>
+            <li>
+              <%= review.content%>
+              </br>
+              <%= link_to "Update", edit_admin_restaurant_review_path(review.restaurant, review), class: 'btn btn-danger' %>
+              <%= link_to "Delete", admin_restaurant_review_path(review.restaurant),
+                method: :delete,
+                data: { confirm: "Are you sure?" },
+                class: 'btn btn-danger'%>
+            </li>
+          <%end%>
+        </div>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+  <%= link_to "Qu'en pensez-vous?", new_admin_restaurant_review_path(@restaurant.id), class: "btn btn-primary" %>
+</div>

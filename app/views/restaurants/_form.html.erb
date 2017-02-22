@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <%= simple_form_for @restaurant do |f| %>
+    <% if @restaurant.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+        <% @restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.input :name, label: 'Le nom du restaurant', error: 'Champs obligatoire' %>
+    <%= f.input :address, label: "L'adresse du restaurant", error: 'Champs obligatoire' %>
+    <%= f.input :phone_number, label: "Le numéro de téléphone" %>
+    <%= f.input :category, label: "Chinese? Italien? Japanese? French? Belgian?", error: 'Champs obligatoire' %>
+    <%= f.button :submit %>
+  <% end %>
+</div>
